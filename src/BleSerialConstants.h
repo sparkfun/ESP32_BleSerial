@@ -14,7 +14,7 @@ constexpr size_t BLE_RX_BUFFER_SIZE = 4096;
 
 constexpr uint16_t DEFAULT_BLE_TX_TIMEOUT = 200;
 constexpr uint16_t DEFAULT_BLE_TX_NOTIFY_DELAY = 20;
-constexpr uint16_t DEFAULT_BLE_SEND_QUEUE_SIZE = 20;
+constexpr uint16_t DEFAULT_BLE_SEND_QUEUE_SIZE = 10;
 
 typedef void (*BLE_CONNECT_CALLBACK)(bool connected);
 
