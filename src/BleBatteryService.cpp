@@ -6,6 +6,9 @@
  * 13 October 2024
  */
 #include "BleBatteryService.h"
+
+#include <BLE2902.h>
+
 #include "BleSerialServer.h"
 
 

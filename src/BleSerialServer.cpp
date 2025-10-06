@@ -1,5 +1,6 @@
 #include "BleSerialServer.h"
 
+
 BleSerialServer::BleSerialServer()
 {
 }
@@ -79,12 +80,12 @@ bool BleSerialServer::isConnected() const
     return Server->getConnectedCount() > 0;
 }
 
-void BleSerialServer::registerSerial(BleSerial *bleSerial)
+void BleSerialServer::registerSerial(char *serviceUuid)
 {
     BLEDevice::stopAdvertising();
 
     pAdvertising = BLEDevice::getAdvertising();
-    pAdvertising->addServiceUUID(bleSerial->serialServiceUuid);
+    pAdvertising->addServiceUUID(serviceUuid);
     pAdvertising->setScanResponse(true);
     pAdvertising->setMinPreferred(0x06);
     pAdvertising->setMinPreferred(0x12);
@@ -111,7 +112,7 @@ void BleSerialServer::registerBatteryService()
     BLEDevice::startAdvertising();
 }
 
-void BleSerialServer::unregisterSerial(BleSerial *bleSerial)
+void BleSerialServer::unregisterSerial()
 {
     registeredSerialCount--;
     if (registeredSerialCount <= 0)

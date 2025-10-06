@@ -11,6 +11,7 @@
 
 #define BLE_BUFFER_SIZE ESP_GATT_MAX_ATTR_LEN // must be greater than MTU, less than ESP_GATT_MAX_ATTR_LEN
 
+
 class BleSerialServer : public BLEServerCallbacks
 {
 
@@ -24,10 +25,10 @@ public:
         return instance;
     }
 
-    void registerSerial(BleSerial *bleSerial);
+    void registerSerial(char *serviceUuid);
     void registerBatteryService();
 
-    void unregisterSerial(BleSerial *bleSerial);
+    void unregisterSerial();
     void unregisterBatteryService();
 
     void startServer(const char *name, int led_pin = -1);
@@ -54,7 +55,7 @@ private:
     uint16_t maxTransferSize = 20;
 
     bool enableLed = false;
-    int ledPin = 13;
+    int ledPin = -1;
 
     char bleDeviceName[80] = "BleSerial";
 
@@ -63,3 +64,5 @@ private:
     int registeredSerialCount = 0;
     bool hasBatteryService = false;
 };
+
+inline int maxBleTransferSize() { return BleSerialServer::getInstance().getMaxTransferSize(); }
