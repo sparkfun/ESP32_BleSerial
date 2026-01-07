@@ -80,6 +80,7 @@ private:
 
 	void setupSerialService();
 	bool started = false;
+	bool flushTaskRunning = false;
 
 	int sendByte(uint8_t byte);
 
