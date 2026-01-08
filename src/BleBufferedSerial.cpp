@@ -62,8 +62,8 @@ void BleBufferedSerial::end()
 	started = false; // This stops the flush task
 	while (flushTaskRunning)
 		vTaskDelay(1); // Wait for the flush task to stop
-	BleSerialServer::getInstance().unregisterSerial();
 	serialService->executeDelete();
+	BleSerialServer::getInstance().unregisterSerial();
 }
 
 bool BleBufferedSerial::connected()
